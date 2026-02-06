@@ -3,83 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Melrose Cardoza ❤️</title>
+    <title>A Formal Invitation for Melrose</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital@0;1&display=swap');
+
         body {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            background-color: #ffe6e6;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background-color: #fcf5f5; /* Soft cream/paper white */
+            font-family: 'Playfair Display', serif;
             margin: 0;
-            overflow: hidden;
+            overflow-x: hidden;
         }
-        .container {
+
+        .letter-card {
+            background: #ffffff;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            border: 1px solid #e0dada;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             text-align: center;
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            z-index: 10;
+            position: relative;
         }
+
+        /* Decorative Border */
+        .letter-card::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid #d63384;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .cinnamoroll-img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
         h1 {
+            font-family: 'Dancing Script', cursive;
             color: #d63384;
             font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .adoration-text {
+            color: #d63384;
+            font-weight: bold;
+            display: block;
             margin-bottom: 20px;
         }
-        .gif_container img {
-            max-width: 250px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
+
         .btn-container {
             display: flex;
             gap: 20px;
             justify-content: center;
-            margin-top: 20px;
+            height: 50px;
         }
+
         button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 10px;
+            padding: 10px 25px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            border: 1px solid #d63384;
             cursor: pointer;
-            transition: transform 0.2s;
+            background: transparent;
+            transition: all 0.3s ease;
         }
+
         #yesBtn {
-            background-color: #4caf50;
+            background-color: #d63384;
             color: white;
         }
+
         #noBtn {
-            background-color: #f44336;
-            color: white;
+            color: #d63384;
             position: absolute;
         }
-        .success-message {
+
+        .success-screen {
             display: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="mainContainer">
-        <div class="gif_container">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYybmN6YmoxbmpxZzR6bm1qZzR6bm1qZzR6bm1qZzR6bm1qZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNUMo/giphy.gif" alt="Cute Cat">
-        </div>
-        <h1>Hey Melrose Cardoza, <br> will you be my Valentine? 🌹</h1>
+    <div class="letter-card" id="mainCard">
+        <img class="cinnamoroll-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnZueXNid3ZueXNid3ZueXNid3ZueXNid3ZueXNid3ZueXNiJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/vYguVdkADWId1sY9B9/giphy.gif" alt="Cinnamoroll">
+        
+        <h1>Dearest Melrose Cardoza,</h1>
+        
+        <p class="message">
+            There are many things I find beautiful in this world, but none quite compare to you. 
+            <span class="adoration-text">I want you to know that I absolutely adore you.</span>
+            It would be my greatest honor if you would grant me the pleasure of your company.
+        </p>
+
+        <p style="margin-bottom: 30px;">Will you be my Valentine?</p>
+
         <div class="btn-container">
-            <button id="yesBtn" onclick="celebrate()">Yes!</button>
+            <button id="yesBtn" onclick="showSuccess()">Yes, I would love to</button>
             <button id="noBtn" onmouseover="moveButton()">No</button>
         </div>
     </div>
 
-    <div class="container success-message" id="successMessage">
-        <div class="gif_container">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYybmN6YmoxbmpxZzR6bm1qZzR6bm1qZzR6bm1qZzR6bm1qZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/G96zgIcQn1L2xpmMlr/giphy.gif" alt="Happy Dance">
-        </div>
-        <h1>Yay! See you on the 14th, Melrose! ❤️</h1>
+    <div class="letter-card success-screen" id="successCard">
+        <img class="cinnamoroll-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODFpZWt0M3Z6N2h3Ynk1bmRxdWthM3Z6N2h3Ynk1bmRxdWthM3Z6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l6H6H2uG57Gv0XzXvG/giphy.gif" alt="Cinnamoroll Happy">
+        <h1>It's a Date!</h1>
+        <p class="message">Thank you for making me the happiest person, Melrose. ❤️</p>
     </div>
 
     <script>
@@ -87,39 +130,14 @@
             const noBtn = document.getElementById('noBtn');
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            
             noBtn.style.left = `${x}px`;
             noBtn.style.top = `${y}px`;
         }
 
-        function celebrate() {
-            document.getElementById('mainContainer').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Add some confetti effect if you want!
-            for(let i=0; i<50; i++) {
-                createHeart();
-            }
-        }
-
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.style.position = 'fixed';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = '100vh';
-            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            heart.style.transition = 'transform 3s linear, opacity 3s';
-            document.body.appendChild(heart);
-
-            setTimeout(() => {
-                heart.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
-                heart.style.opacity = '0';
-            }, 100);
-
-            setTimeout(() => heart.remove(), 4000);
+        function showSuccess() {
+            document.getElementById('mainCard').style.display = 'none';
+            document.getElementById('successCard').style.display = 'block';
         }
     </script>
 </body>
 </html>
-
